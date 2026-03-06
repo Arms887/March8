@@ -47,14 +47,13 @@ export default function Footer() {
           💖
         </motion.div>
 
-        <motion.p
-          className={styles.date}
+        <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.5, duration: 0.7 }}
         >
-          8 Մարտ
-        </motion.p>
+          <p className={styles.date}>8 Մարտ</p>
+        </motion.div>
 
         <motion.div
           className={styles.divider}
