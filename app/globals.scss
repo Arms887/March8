@@ -1,0 +1,64 @@
+:root {
+  --color-red: #ff1744;
+  --color-gold: #ffd700;
+  --color-pink: #ff69b4;
+  --color-deep-pink: #ff1493;
+  --color-purple: #7b2d8b;
+  --color-orange: #ff6d00;
+  --color-violet: #e040fb;
+  --color-bg-dark: #0d0221;
+  --color-bg-mid: #1a0a3e;
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Roboto', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, #0d0221 0%, #1a0a3e 40%, #2d1048 70%, #1a0a3e 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  color: white;
+  font-family: var(--font-body);
+  overflow-x: hidden;
+
+  &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(255, 23, 68, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(255, 105, 180, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(123, 45, 139, 0.1) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0221;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--color-red), var(--color-pink));
+  border-radius: 3px;
+}

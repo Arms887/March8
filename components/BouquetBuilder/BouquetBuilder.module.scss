@@ -1,0 +1,152 @@
+.toggleBtn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 105, 180, 0.4);
+  background: rgba(13, 2, 33, 0.85);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    border-color: var(--color-pink);
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.35), 0 4px 20px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--color-red);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+}
+
+.panel {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 1.5rem;
+  z-index: 999;
+  width: 280px;
+  background: rgba(13, 2, 33, 0.92);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 105, 180, 0.25);
+  border-radius: 20px;
+  padding: 1.25rem;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 105, 180, 0.1);
+
+  @media (max-width: 380px) {
+    width: calc(100vw - 2rem);
+    right: 1rem;
+  }
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.25rem;
+}
+
+.sub {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 1rem;
+  font-family: var(--font-body);
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.flowerBtn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--fc, rgba(255,255,255,0.1));
+  border-radius: 12px;
+  padding: 0.5rem 0.25rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  transition: background 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 12px var(--fc, transparent);
+  }
+}
+
+.flowerEmoji {
+  font-size: 1.5rem;
+}
+
+.flowerName {
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-body);
+}
+
+.bouquetDisplay {
+  min-height: 60px;
+  border: 1px dashed rgba(255, 215, 0, 0.2);
+  border-radius: 12px;
+  padding: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.bouquetFlower {
+  font-size: 1.6rem;
+  display: inline-block;
+}
+
+.empty {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-family: var(--font-body);
+  font-style: italic;
+}
+
+.clearBtn {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 23, 68, 0.4);
+  background: rgba(255, 23, 68, 0.1);
+  color: rgba(255, 100, 100, 0.9);
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(255, 23, 68, 0.2);
+  }
+}

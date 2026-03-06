@@ -1,0 +1,106 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.sparkle {
+  position: absolute;
+  color: var(--color-gold);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dateWrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.number {
+  font-family: var(--font-display);
+  font-size: clamp(9rem, 22vw, 18rem);
+  font-weight: 900;
+  line-height: 0.85;
+  background: linear-gradient(135deg, #ffd700 0%, #ff6d00 40%, #ff1744 70%, #ff69b4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 60px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 120px rgba(255, 23, 68, 0.3));
+  letter-spacing: -0.04em;
+}
+
+.month {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 7rem);
+  font-weight: 900;
+  color: white;
+  letter-spacing: 0.25em;
+  text-shadow:
+    0 0 30px rgba(255, 105, 180, 0.9),
+    0 0 60px rgba(255, 105, 180, 0.4),
+    0 2px 8px rgba(0, 0, 0, 0.5);
+  align-self: flex-end;
+  padding-bottom: 0.5rem;
+}
+
+.tagline {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(0.9rem, 2.5vw, 1.6rem);
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.flowers {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flower {
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  display: inline-block;
+  cursor: default;
+  user-select: none;
+  filter: drop-shadow(0 0 8px rgba(255, 105, 180, 0.5));
+}
+
+.scrollHint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(255, 215, 0, 0.6), transparent);
+  transform-origin: top;
+}
