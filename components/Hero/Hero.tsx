@@ -31,12 +31,11 @@ export default function Hero() {
 
       <div className={styles.dateWrap}>
         <motion.div
-          className={styles.number}
           initial={{ scale: 0.3, opacity: 0, rotate: -15 }}
           animate={{ scale: 1, opacity: 1, rotate: 0 }}
           transition={{ duration: 1.1, type: 'spring', bounce: 0.5 }}
         >
-          8
+          <div className={styles.number}>8</div>
         </motion.div>
 
         <motion.div
