@@ -39,12 +39,11 @@ export default function SplashScreen({ onEnter }: Props) {
 
       {/* big 8 background */}
       <motion.div
-        className={styles.bgNumber}
         animate={{ scale: [1, 1.04, 1], opacity: [0.06, 0.1, 0.06] }}
         transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
         aria-hidden="true"
       >
-        8
+        <div className={styles.bgNumber}>8</div>
       </motion.div>
 
       <div className={styles.content}>
@@ -57,14 +56,13 @@ export default function SplashScreen({ onEnter }: Props) {
           8 ՄԱՐՏ
         </motion.p>
 
-        <motion.h1
-          className={styles.title}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
         >
-          Այսօր քո օրն է
-        </motion.h1>
+          <h1 className={styles.title}>Այսօր քո օրն է</h1>
+        </motion.div>
 
         <motion.p
           className={styles.subtitle}
@@ -75,14 +73,13 @@ export default function SplashScreen({ onEnter }: Props) {
           Հատուկ շնորհավորանք է պատրաստված քեզ համար
         </motion.p>
 
-        <motion.p
-          className={styles.from}
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.8 }}
         >
-          Արմանի կողմից
-        </motion.p>
+          <p className={styles.from}>Արմանի կողմից</p>
+        </motion.div>
 
         <motion.button
           className={styles.enterBtn}
