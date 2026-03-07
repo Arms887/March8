@@ -3,9 +3,12 @@
 import { motion } from 'framer-motion'
 import styles from './Hero.module.scss'
 
-const floatingItems = ['🌸', '🌺', '🌹', '🌷', '💐', '🌸', '🌺', '🌹', '💕', '✨']
+const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768
+const floatingItems = isMobile
+  ? ['🌸', '🌺', '🌹', '🌷', '💐', '💕']
+  : ['🌸', '🌺', '🌹', '🌷', '💐', '🌸', '🌺', '🌹', '💕', '✨']
 
-const sparkles = Array.from({ length: 12 }, (_, i) => ({
+const sparkles = Array.from({ length: isMobile ? 5 : 12 }, (_, i) => ({
   id: i,
   top: `${10 + Math.random() * 80}%`,
   left: `${5 + Math.random() * 90}%`,
@@ -21,8 +24,8 @@ export default function Hero() {
           key={s.id}
           className={styles.sparkle}
           style={{ top: s.top, left: s.left, fontSize: s.size }}
-          animate={{ opacity: [0, 1, 0], scale: [0.5, 1.3, 0.5], rotate: [0, 180, 360] }}
-          transition={{ duration: 2.5, repeat: Infinity, delay: s.delay, ease: 'easeInOut' }}
+          animate={{ opacity: [0, 1, 0], scale: [0.5, 1.2, 0.5] }}
+          transition={{ duration: isMobile ? 3.5 : 2.5, repeat: Infinity, delay: s.delay, ease: 'easeInOut' }}
           aria-hidden="true"
         >
           ✦
@@ -30,13 +33,9 @@ export default function Hero() {
       ))}
 
       <div className={styles.dateWrap}>
-        <motion.div
-          initial={{ scale: 0.3, opacity: 0, rotate: -15 }}
-          animate={{ scale: 1, opacity: 1, rotate: 0 }}
-          transition={{ duration: 1.1, type: 'spring', bounce: 0.5 }}
-        >
+        <div className={styles.numberWrap}>
           <div className={styles.number}>8</div>
-        </motion.div>
+        </div>
 
         <motion.div
           className={styles.month}
@@ -75,8 +74,8 @@ export default function Hero() {
           <motion.span
             key={i}
             className={styles.flower}
-            animate={{ y: [0, -18, 0], rotate: [0, 8, -8, 0], scale: [1, 1.15, 1] }}
-            transition={{ duration: 2.8 + i * 0.2, repeat: Infinity, delay: i * 0.15, ease: 'easeInOut' }}
+            animate={isMobile ? { y: [0, -10, 0] } : { y: [0, -18, 0], rotate: [0, 8, -8, 0], scale: [1, 1.15, 1] }}
+            transition={{ duration: 3 + i * 0.2, repeat: Infinity, delay: i * 0.15, ease: 'easeInOut' }}
           >
             {item}
           </motion.span>

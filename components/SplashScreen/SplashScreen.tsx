@@ -7,7 +7,8 @@ interface Props {
   onEnter: () => void
 }
 
-const petals = Array.from({ length: 16 }, (_, i) => ({
+const PETAL_COUNT = typeof window !== 'undefined' && window.innerWidth <= 768 ? 6 : 12
+const petals = Array.from({ length: PETAL_COUNT }, (_, i) => ({
   id: i,
   left: `${Math.random() * 100}%`,
   delay: Math.random() * 4,
@@ -39,7 +40,7 @@ export default function SplashScreen({ onEnter }: Props) {
 
       {/* big 8 background */}
       <motion.div
-        animate={{ scale: [1, 1.04, 1], opacity: [0.06, 0.1, 0.06] }}
+        animate={{ scale: [1, 1.04, 1] }}
         transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
         aria-hidden="true"
       >
@@ -47,14 +48,13 @@ export default function SplashScreen({ onEnter }: Props) {
       </motion.div>
 
       <div className={styles.content}>
-        <motion.p
-          className={styles.date}
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.7 }}
         >
-          8 ՄԱՐՏ
-        </motion.p>
+          <p className={styles.date}>8 ՄԱՐՏ</p>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -64,14 +64,13 @@ export default function SplashScreen({ onEnter }: Props) {
           <h1 className={styles.title}>Այսօր քո օրն է</h1>
         </motion.div>
 
-        <motion.p
-          className={styles.subtitle}
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
         >
-          Հատուկ շնորհավորանք է պատրաստված քեզ համար
-        </motion.p>
+          <p className={styles.subtitle}>Հատուկ շնորհավորանք է պատրաստված քեզ համար</p>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 10 }}

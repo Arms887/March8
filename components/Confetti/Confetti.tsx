@@ -29,8 +29,10 @@ export default function Confetti() {
   const [particles, setParticles] = useState<Particle[]>([])
 
   useEffect(() => {
-    const shapes: Particle['shape'][] = ['circle', 'rect', 'heart']
-    const items: Particle[] = Array.from({ length: 90 }, (_, i) => ({
+    const isMobile = window.innerWidth <= 768
+    const count = isMobile ? 25 : 50
+    const shapes: Particle['shape'][] = isMobile ? ['circle', 'rect'] : ['circle', 'rect', 'heart']
+    const items: Particle[] = Array.from({ length: count }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
       delay: Math.random() * 8,
