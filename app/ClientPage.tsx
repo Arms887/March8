@@ -16,11 +16,22 @@ import ShareButton from '@/components/ShareButton/ShareButton'
 
 export default function ClientPage() {
   const [entered, setEntered] = useState(false)
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null)
+
+  const handleEnter = () => {
+    // Must create and play audio synchronously within user gesture — iOS requirement
+    const a = new Audio('/mardi8.mp3')
+    a.loop = true
+    a.volume = 0.35
+    a.play().catch(() => {})
+    setAudio(a)
+    setEntered(true)
+  }
 
   return (
     <>
       <AnimatePresence>
-        {!entered && <SplashScreen onEnter={() => setEntered(true)} />}
+        {!entered && <SplashScreen onEnter={handleEnter} />}
       </AnimatePresence>
 
       {entered && (
@@ -32,7 +43,7 @@ export default function ClientPage() {
           <GifGallery />
           <WishCards />
           <Footer />
-          <MusicPlayer autoStart />
+          <MusicPlayer audioElement={audio} />
           <BouquetBuilder />
           <ShareButton />
         </main>

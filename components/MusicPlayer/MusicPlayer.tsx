@@ -7,36 +7,39 @@ import styles from './MusicPlayer.module.scss'
 const MUSIC_URL = '/mardi8.mp3'
 
 interface Props {
-  autoStart?: boolean
+  audioElement?: HTMLAudioElement | null
 }
 
-export default function MusicPlayer({ autoStart = false }: Props) {
-  const audioRef = useRef<HTMLAudioElement | null>(null)
-  const [playing, setPlaying] = useState(false)
+export default function MusicPlayer({ audioElement }: Props) {
+  const audioRef = useRef<HTMLAudioElement | null>(audioElement ?? null)
+  const [playing, setPlaying] = useState(!!audioElement)
   const [ready, setReady] = useState(false)
   const [showTooltip, setShowTooltip] = useState(false)
 
   useEffect(() => {
-    const audio = new Audio(MUSIC_URL)
-    audio.loop = true
-    audio.volume = 0.35
-    audioRef.current = audio
-
-    const onReady = () => {
-      setReady(true)
-      if (autoStart) {
-        // User clicked splash screen — browser allows play immediately
-        audio.play().then(() => setPlaying(true)).catch(() => {})
+    if (audioElement) {
+      audioRef.current = audioElement
+      const onReady = () => setReady(true)
+      if (audioElement.readyState >= 4) {
+        setReady(true)
+      } else {
+        audioElement.addEventListener('canplaythrough', onReady, { once: true })
+      }
+      return () => {
+        audioElement.removeEventListener('canplaythrough', onReady)
+      }
+    } else {
+      const audio = new Audio(MUSIC_URL)
+      audio.loop = true
+      audio.volume = 0.35
+      audioRef.current = audio
+      audio.addEventListener('canplaythrough', () => setReady(true), { once: true })
+      return () => {
+        audio.pause()
+        audio.src = ''
       }
     }
-
-    audio.addEventListener('canplaythrough', onReady, { once: true })
-
-    return () => {
-      audio.pause()
-      audio.src = ''
-    }
-  }, [autoStart])
+  }, [audioElement])
 
   const toggle = () => {
     const audio = audioRef.current
